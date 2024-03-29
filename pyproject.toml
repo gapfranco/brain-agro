@@ -1,0 +1,67 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "aidoc.settings"
+python_files = [
+    "test_*.py",
+    "*_test.py",
+    "test*.py"
+]
+addopts = "-vv -x --lf"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:.*Django now detects this configuration.*:PendingDeprecationWarning",
+    "ignore:.*Django now detects this configuration.*:DeprecationWarning",
+]
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+combine_as_imports = true
+include_trailing_comma = true
+line_length = 79
+
+[tool.ruff]
+target-version = "py312"
+line-length = 79
+
+[tool.taskipy.tasks]
+tests = "python -m pytest core/tests/"
+coverage = "coverage run --source='.' -m pytest core/tests/;coverage report -m"
+pre = "pre-commit run --all-files"
+export = "poetry export -f requirements.txt -o requirements.txt --without-hashes"
+
+[tool.poetry]
+name = "brain-agro"
+version = "0.1.0"
+description = ""
+authors = ["Gonçalo Franco <gapfranco@gmail.com>"]
+readme = "README.md"
+packages = [{include = "brain_agro"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "4.2"
+djangorestframework = "^3.15.1"
+whitenoise = "^6.6.0"
+python-dotenv = "^1.0.1"
+requests = "^2.31.0"
+gunicorn = "^21.2.0"
+dj-database-url = "^2.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+isort = "^5.13.2"
+ruff = "^0.3.4"
+pytest = "^8.1.1"
+pre-commit = "^3.7.0"
+pytest-django = "^4.8.0"
+coverage = "^7.4.4"
+taskipy = "^1.12.2"
+factory-boy = "^3.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
