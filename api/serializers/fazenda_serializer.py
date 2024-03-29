@@ -32,6 +32,7 @@ class FazendaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fazenda
         fields = [
+            "id",
             "codigo",
             "nome_fazenda",
             "nome_produtor",

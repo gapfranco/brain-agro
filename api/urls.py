@@ -7,6 +7,7 @@ from django.urls import path
 from api.views import (
     AlteraFazendaView,
     CriaFazendaView,
+    DeletaCulturasView,
     DeletaFazendaView,
     QueryView,
 )
@@ -22,6 +23,11 @@ urlpatterns = [
     path(
         "exclui_fazenda/<int:fazenda_id>",
         DeletaFazendaView.as_view(),
+        name="exclui",
+    ),
+    path(
+        "exclui_culturas/<int:fazenda_id>",
+        DeletaCulturasView.as_view(),
         name="exclui",
     ),
 ]
