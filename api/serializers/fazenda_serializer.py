@@ -86,6 +86,8 @@ class FazendaSerializer(serializers.ModelSerializer):
             )
             plantio = tot_culturas["area__sum"]
 
+        if not plantio:
+            plantio = 0
         for field, value in validated_data.items():
             setattr(instance, field, value)
         msgs = valida_areas(

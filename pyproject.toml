@@ -1,5 +1,5 @@
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "aidoc.settings"
+DJANGO_SETTINGS_MODULE = "agro.settings"
 python_files = [
     "test_*.py",
     "*_test.py",
@@ -27,8 +27,8 @@ target-version = "py312"
 line-length = 79
 
 [tool.taskipy.tasks]
-test = "python -m pytest core/tests/"
-coverage = "coverage run --source='.' -m pytest core/tests/;coverage report -m"
+test = "python -m pytest tests/"
+coverage = "coverage run --source='.' -m pytest tests/;coverage report -m"
 pre = "pre-commit run --all-files"
 export = "poetry export -f requirements.txt -o agro_requirements.txt --without-hashes"
 

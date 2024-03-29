@@ -1,0 +1,32 @@
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    if settings.DEBUG
+
+[run]
+omit =
+    static/*
+    agro/__init__.py
+    agro/asgi.py
+    agro/settings.py
+    agro/urls.py
+    agro/wsgi.py
+    base/__init__.py
+    base/management/*
+    base/migrations/*
+    base/admin.py
+    base/apps.py
+    base/tests/*
+    .github/*
+    .pytest_cache
+    .coverage
+    .coveragerc
+    .flake8
+    .gitignore
+    docker-compose.yaml
+    Dockerfile
+    README.md
+    agro_requirements.txt
+    manage.py
+    tests/*
