@@ -1,6 +1,6 @@
 # brain-agro
 
-## Backend API cadastro agrícola
+#### Backend API cadastro agrícola
 
 ### Objetivos
 
@@ -12,18 +12,21 @@ API simples de demonstração usando Django Rest Framework.
 
 ### Instalação
 
+O ambiente de desenvolvimento foi montado utilizando poetry (https://python-poetry.org).
+
 - Acessar o folder onde foi baixado.
-- Usando o poetry
   ```
   poetry install
   poetry shell
   ```
-- Usando virtualenv manual:
+- Se não tiver o poetry instalado e preferir usar o virtualvenv de forma manual:
   ```
   python3 -m venv venv
-    source venv/bin/activate (Mac/Linux)
+  source venv/bin/activate (Mac/Linux)
   venv/Scripts/activate.bat (Windows)
+  pip install -r agro_requirements.xtx
   ```
+
 - Copiar o arquivo .env.modelo para .env e ajustar o ambiente para o banco de dados.
   O default é usar sqlite no proprio folder do projeto (dn.sqlite3)
 
@@ -169,11 +172,17 @@ Passando o id da fazenda na url. A fazenda com esse id e todas as suas culturas 
 Passando o id da fazenda na url. Todas as culturas da fazenda serão excluidas.
 
 
-
-
 ---
 ### Testes
 
-Usando o **PyTest** para realizar testes unitários básicos. Para rodar os testes, basta
-chamar o comando `pytest` de dentro do diretório do serviço, após ativar o virtual environmente
-do python.
+Usando o **PyTest** para realizar os testes. Foram criados 2 tasks no pyproject.toml:
+
+1. **task test** - Rodas todos os testes
+2. **task coverage** - Roda todos os testes com cobertura
+
+Chamar na linha de comando na raiz do projeto. Por exemplo:
+
+```
+task coverage
+
+```
