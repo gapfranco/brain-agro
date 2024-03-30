@@ -30,12 +30,34 @@ O ambiente de desenvolvimento foi montado utilizando poetry (https://python-poet
 - Copiar o arquivo .env.modelo para .env e ajustar o ambiente para o banco de dados.
   O default é usar sqlite no proprio folder do projeto (dn.sqlite3)
 
+- Criar as tabelas de banco de dados iniciais
+  ```
+  python manage.py migrate
+  ```
+
+- Opcionalmente, criar um usuário para acessar o admin do django
+  ```
+  python manage.py createsuperuser
+  ```
+
+- Foi criado um comando para gerar registros fake para testar:
+  ```
+  python manage.py fake_data
+  ```
+  cada chamada desse comando vai criar 10 fazendas com culturas aleatórias.
+
 - Iniciar o serviço
   ```
   python manage.py runserver
   ```
 
 Escuta a porta 8000 no protocolo HTTP. Para encerrá-lo digitar CTRL-C
+
+### Operação
+
+Com o serviço rodando já pode chamar os endpoints criados.
+Para auxiliar nos testes usando Postman, importar a collection e ambientes incluidos no folder **postman**
+na raiz do projeto.
 
 ---
 ### Endpoints
