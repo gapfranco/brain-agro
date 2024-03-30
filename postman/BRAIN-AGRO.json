@@ -1,0 +1,218 @@
+{
+  "info": {
+    "name": "BRAIN-AGRO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Lista fazendas",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/query/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cidade\": \"\",\n  \"uf\": \"\",\n  \"culturas\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Resumo",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/resumo"
+      }
+    },
+    {
+      "name": "Resumo estados",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/resumo_culturas"
+      }
+    },
+    {
+      "name": "Resumo culturas",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/resumo_estados"
+      }
+    },
+    {
+      "name": "Cria fazenda",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/cria_fazenda/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"07164374813\",\n  \"nome_fazenda\": \"Aurora\",\n  \"nome_produtor\": \"Deise\",\n  \"cidade\": \"Ribeirão Preto\",\n  \"uf\": \"SP\",\n  \"area_total\": 300,\n  \"area_vegetacao\": 80,\n  \"area_cultura\": 200,\n  \"culturas\": [\n    {\n      \"cultura\": \"Soja\",\n      \"area\": 100\n    },\n    {\n      \"cultura\": \"Cana\",\n      \"area\": 30\n    },\n    {\n      \"cultura\": \"Algodão\",\n      \"area\": 40\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Altera fazenda",
+      "event": [],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/altera_fazenda/13",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome_fazenda\": \"Aurorinha\",\n  \"culturas\": [\n    {\n      \"cultura\": \"Cana\",\n      \"area\": 10\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Exclui fazenda",
+      "event": [],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/exclui_fazenda/12"
+      }
+    },
+    {
+      "name": "Exclui culturas",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "url": "{{origem}}/api/exclui_culturas/12"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "origem",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
