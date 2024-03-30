@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Count, Q, Sum
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.response import Response
@@ -85,3 +85,41 @@ class DeletaCulturasView(APIView):
                 "Erro de leitura da fazenda (existe?)",
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+class ResumoView(APIView):
+    def get(self, request):
+        res = Fazenda.objects.all().aggregate(
+            fazendas=Count("id"),
+            area_total=Sum("area_cultura"),
+            area_cultura=Sum("area_cultura"),
+            area_vegetacao=Sum("area_vegetacao"),
+        )
+        return Response(res, status=status.HTTP_200_OK)
+
+
+class ResumoEstadosView(APIView):
+    def get(self, request):
+        res = Fazenda.objects.values("uf").annotate(
+            fazendas=Count("id"),
+            area_total=Sum("area_total"),
+            area_cultura=Sum("area_cultura"),
+            area_vegetacao=Sum("area_vegetacao"),
+        )
+        return Response(res, status=status.HTTP_200_OK)
+
+
+class ResumoCulturasUFView(APIView):
+    def get(self, request):
+        res = Cultura.objects.values("tipo_cultura", "fazenda__uf").annotate(
+            total_area=Sum("area"),
+        )
+        return Response(res, status=status.HTTP_200_OK)
+
+
+class ResumoCulturasView(APIView):
+    def get(self, request):
+        res = Cultura.objects.values("tipo_cultura").annotate(
+            total_area=Sum("area"),
+        )
+        return Response(res, status=status.HTTP_200_OK)

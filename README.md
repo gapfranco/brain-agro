@@ -171,6 +171,89 @@ Passando o id da fazenda na url. A fazenda com esse id e todas as suas culturas 
 
 Passando o id da fazenda na url. Todas as culturas da fazenda serão excluidas.
 
+---
+#### Resumo
+
+`GET /api/resumo`
+
+Retorna os totais cadastrados
+```
+{
+  "fazendas": 12,
+  "area_total": 2160,
+  "area_cultura": 2160,
+  "area_vegetacao": 950
+}
+```
+
+---
+#### Resumo por Estados
+
+`GET /api/resumo_estado`
+
+Retorna um resumo por estado
+```
+[
+  {
+    "uf": "MG",
+    "fazendas": 2,
+    "area_total": 260,
+    "area_cultura": 260,
+    "area_vegetacao": 180
+  },
+  {
+    "uf": "SP",
+    "fazendas": 10,
+    "area_total": 1900,
+    "area_cultura": 1900,
+    "area_vegetacao": 770
+  }
+]
+```
+
+---
+#### Resumo por Estados e culturas
+
+`GET /api/resumo_uf_culturas`
+
+Retorna um resumo por estado e cultura
+```
+[
+  {
+    "tipo_cultura": "Cana",
+    "fazenda__uf": "MG",
+    "total_area": 100
+  },
+  {
+    "tipo_cultura": "Cana",
+    "fazenda__uf": "SP",
+    "total_area": 50
+  },
+  {
+    "tipo_cultura": "Soja",
+    "fazenda__uf": "SP",
+    "total_area": 20
+  }
+]
+```
+---
+#### Resumo por culturas
+
+`GET /api/resumo_culturas`
+
+Retorna um resumo por culturas
+```
+[
+  {
+    "tipo_cultura": "Cana",
+    "total_area": 150
+  },
+  {
+    "tipo_cultura": "Soja",
+    "total_area": 20
+  }
+]
+```
 
 ---
 ### Testes
@@ -184,5 +267,15 @@ Chamar na linha de comando na raiz do projeto. Por exemplo:
 
 ```
 task coverage
+
+```
+
+---
+### Dados de teste
+
+O comando **fake_data** gera dados de teste no banco de dados em grupos de 10;
+
+```
+python manage.py fake_data
 
 ```
