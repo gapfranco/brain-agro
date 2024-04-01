@@ -1,5 +1,6 @@
 from django.db.models import Count, Q, Sum
 from django.http import JsonResponse
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -10,6 +11,7 @@ from base.models import Cultura, Fazenda
 
 
 class QueryView(APIView):
+    @swagger_auto_schema(request_body=QuerySerializer)
     def post(self, request):
         serializer = QuerySerializer(data=request.data)
         if serializer.is_valid():
@@ -40,6 +42,7 @@ class QueryView(APIView):
 
 
 class CriaFazendaView(APIView):
+    @swagger_auto_schema(request_body=FazendaSerializer)
     def post(self, request):
         serializer = FazendaSerializer(data=request.data)
         if serializer.is_valid():
@@ -49,6 +52,7 @@ class CriaFazendaView(APIView):
 
 
 class AlteraFazendaView(APIView):
+    @swagger_auto_schema(request_body=FazendaSerializer)
     def patch(self, request, fazenda_id):
         fazenda = Fazenda.objects.get(id=fazenda_id)
         serializer = FazendaSerializer(
